@@ -1457,6 +1457,23 @@ impl Datelike for NaiveDate {
         self.year()
     }
 
+    /// Returns the quarter number starting from 1
+    ///
+    /// The return value ranges from 1 to 4.
+    ///
+    /// # Example
+    ///
+    /// ```
+    /// use chrono::{Datelike, NaiveDate};
+    ///
+    /// assert_eq!(NaiveDate::from_ymd_opt(2015, 9, 8).unwrap().quarter(), 3);
+    /// assert_eq!(NaiveDate::from_ymd_opt(-308, 3, 14).unwrap().quarter(), 1);
+    /// ```
+    #[inline]
+    fn quarter(&self) -> u32 {
+        (self.month() - 1).div_euclid(3) + 1
+    }
+
     /// Returns the month number starting from 1.
     ///
     /// The return value ranges from 1 to 12.
