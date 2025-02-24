@@ -40,6 +40,11 @@ pub trait Datelike: Sized {
         if year < 1 { (false, (1 - year) as u32) } else { (true, year as u32) }
     }
 
+    /// Returns the quarter number starting from 1.
+    ///
+    /// The return value ranges from 1 to 4.
+    fn quarter(&self) -> u32;
+
     /// Returns the month number starting from 1.
     ///
     /// The return value ranges from 1 to 12.
