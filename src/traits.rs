@@ -43,7 +43,10 @@ pub trait Datelike: Sized {
     /// Returns the quarter number starting from 1.
     ///
     /// The return value ranges from 1 to 4.
-    fn quarter(&self) -> u32;
+    #[inline]
+    fn quarter(&self) -> u32 {
+        (self.month() - 1).div_euclid(3) + 1
+    }
 
     /// Returns the month number starting from 1.
     ///
