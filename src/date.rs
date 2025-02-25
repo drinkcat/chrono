@@ -395,10 +395,6 @@ impl<Tz: TimeZone> Datelike for Date<Tz> {
         self.naive_local().year()
     }
     #[inline]
-    fn quarter(&self) -> u32 {
-        self.naive_local().quarter()
-    }
-    #[inline]
     fn month(&self) -> u32 {
         self.naive_local().month()
     }
