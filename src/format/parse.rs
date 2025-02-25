@@ -821,7 +821,14 @@ mod tests {
         );
         check(
             "1 1 2 3 4 5",
-            &[num(Quarter), num(Month), num(Day), num(WeekFromSun), num(NumDaysFromSun), num(IsoWeek)],
+            &[
+                num(Quarter),
+                num(Month),
+                num(Day),
+                num(WeekFromSun),
+                num(NumDaysFromSun),
+                num(IsoWeek),
+            ],
             parsed!(quarter: 1, month: 1, day: 2, week_from_sun: 3, weekday: Weekday::Thu, isoweek: 5),
         );
         check(
