@@ -717,13 +717,15 @@ impl Parsed {
             (_, _, _) => return Err(NOT_ENOUGH),
         };
 
-        // verify the quarter if we have a good parsed date so far
-        let verify_quarter = |date: NaiveDate| {
-            let quarter = date.quarter();
-            self.quarter.unwrap_or(quarter) == quarter
-        };
+        if !verified {
+            return Err(IMPOSSIBLE);
+        } else if let Some(parsed) = self.quarter {
+            if parsed != parsed_date.quarter() {
+                return Err(IMPOSSIBLE);
+            }
+        }
 
-        if verified && verify_quarter(parsed_date) { Ok(parsed_date) } else { Err(IMPOSSIBLE) }
+        Ok(parsed_date)
     }
 
     /// Returns a parsed naive time out of given fields.
